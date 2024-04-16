@@ -24,3 +24,18 @@
   border-radius: 10px;
   color: #ecf0f1;
 }
+.calculator .display{
+  /* grid-column: 1 / -1; */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: rgba(42, 42, 42, .40);
+  font-size: 45px;
+  font-weight: 600;
+  padding: 0 1rem;
+  /* margin-bottom: .5rem; */
+  border-radius: inherit;
+  color: currentColor;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
