@@ -16,7 +16,7 @@
 .container__calculator{
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  /* gap: .2em; */
+  gap: .2em;
   width: 550px;
   max-width: 100%;
   height: 700px;
@@ -50,4 +50,18 @@
   border-radius: inherit;
   cursor: pointer;
   transition: all .3s ease-in-out;
+}
+.calculator__btn.operator{
+  background-color: #12CBC4;
+}
+.calculator__btn.operator:hover{
+  transform: scale(.9);
+  color: #2c3e50;
+}
+.calculator__btn:hover:not(.operator){
+  color: #12CBC4;
+  transform: scale(.9);
+}
+#equal{
+  grid-column: 4 / -1;
 }
