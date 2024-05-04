@@ -10,7 +10,7 @@
   background: fixed url("/calculator-background.webp") center / cover no-repeat #333;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
 }
 .container__calculator{
@@ -64,4 +64,36 @@
 }
 #equal{
   grid-column: 4 / -1;
+}
+.calculator__btn.clear:hover{
+  color: #d63031;
+}
+.calculator__error{
+  color: #d63031;
+  font-weight: bold;
+  font-style: italic;
+}
+.container__node{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 2.5em;
+}
+.container__node h2{
+  font-size: 2em;
+  font-style: italic;
+  margin-bottom: .5rem;
+  color: #2c3e50;
+  text-align: center;
+}
+.container__node ul{
+  text-align: center;
+  list-style: none;
+  width: 100%;
+}
+.container__node ul li{
+  font-size: 1.5em;
+  color: #333;
+  font-weight: bold;
 }
