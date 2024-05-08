@@ -10,3 +10,11 @@ let history = [];
 let memory = [];
 let output = '';
 
+const calculate = (value) => {
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
