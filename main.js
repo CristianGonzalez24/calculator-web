@@ -11,8 +11,12 @@ let memory = [];
 let output = '';
 
 const calculate = (value) => {
-    try {
-        
+    try {      
+        if (value === '=') {
+            let result;
+        } else {
+
+        }
     } catch (error) {
         
     }
