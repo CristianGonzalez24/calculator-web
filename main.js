@@ -18,7 +18,10 @@ const calculate = (value) => {
 
         }
     } catch (error) {
-        
+        display.textContent = 'Error';
+        const errorMessage = document.querySelector('.calculator__error');
+        errorMessage.textContent = error.message;
+        output = '';
     }
 }
 
