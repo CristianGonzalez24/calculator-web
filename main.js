@@ -19,6 +19,15 @@ const calculate = (value) => {
             if (output === '') {
                 return;
             }
+            else if (output.includes('√')) {
+                const number = parseFloat(output.substring(1));
+                if (!isNaN(number)) {
+                    result = Math.sqrt(number).toFixed(12);
+                    history.push('√' + number + ' = ' + result);
+                } else {
+                    throw new Error('Número inválido dentro de la raíz cuadrada');
+                }
+            }
         } else {
 
         }
