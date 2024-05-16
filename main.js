@@ -25,7 +25,15 @@ const calculate = (value) => {
                     result = Math.sqrt(number).toFixed(12);
                     history.push('√' + number + ' = ' + result);
                 } else {
-                    throw new Error('Número inválido dentro de la raíz cuadrada');
+                    throw new Error('Invalid number inside the square root');
+                }
+            } else if (output.includes('^')) {                
+                const [base, exponent] = output.split('^').map(parseFloat);
+                if (!isNaN(base) && !isNaN(exponent)) {
+                    result = Math.pow(base, exponent);
+                    history.push(base + '^' + exponent + ' = ' + result);
+                } else {
+                    throw new Error('Invalid expression for exponentiation');
                 }
             }
         } else {
