@@ -18,8 +18,7 @@ const calculate = (value) => {
             let result;
             if (output === '') {
                 return;
-            }
-            else if (output.includes('√')) {
+            } else if (output.includes('√')) {
                 const number = parseFloat(output.substring(1));
                 if (!isNaN(number)) {
                     result = Math.sqrt(number).toFixed(12);
@@ -34,6 +33,14 @@ const calculate = (value) => {
                     history.push(base + '^' + exponent + ' = ' + result);
                 } else {
                     throw new Error('Invalid expression for exponentiation');
+                }
+            } else if (output.includes('ln')) {
+                const number = parseFloat(output.substring(3));
+                if (!isNaN(number) && number > 0) {
+                    result = Math.log(number);
+                    history.push('ln(' + number + ') = ' + result.toFixed(12));
+                } else {
+                    throw new Error('Invalid number for natural logarithm');
                 }
             }
         } else {
