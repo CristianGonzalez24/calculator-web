@@ -42,6 +42,14 @@ const calculate = (value) => {
                 } else {
                     throw new Error('Invalid number for natural logarithm');
                 }
+            } else if (output.includes('log')) {
+                const number = parseFloat(output.substring(4));
+                if (!isNaN(number) && number > 0) {
+                    result = Math.log10(number);
+                    history.push('log(' + number + ') = ' + result.toFixed(12));
+                } else {
+                    throw new Error('Invalid number for logarithm');
+                }
             }
         } else {
 
