@@ -50,6 +50,16 @@ const calculate = (value) => {
                 } else {
                     throw new Error('Invalid number for logarithm');
                 }
+            } else if (output.includes('sin') || output.includes('cos') || output.includes('tan')) {
+                const match = output.match(trigFunctionRegex);
+                const func = match[1];
+                const angle = parseFloat(match[2]);
+                if (!isNaN(angle)) {
+                    result = calculateTrigFunction(angle, func);
+                    history.push(output + ' = ' + result);
+                } else {
+                    throw new Error('Invalid angle for trigonometric function');
+                }
             }
         } else {
 
@@ -63,4 +73,16 @@ const calculate = (value) => {
 
 function clearErrorMessage() {
     errorMessage.textContent = '';
+}
+const calculateTrigFunction = (angle, func) => {
+    switch (func) {
+        case 'sin':
+            return Math.sin(angle * (Math.PI / 180)).toFixed(12); // Convertir ángulo de grados a radianes
+        case 'cos':
+            return Math.cos(angle * (Math.PI / 180)).toFixed(12); 
+        case 'tan':
+            return Math.tan(angle * (Math.PI / 180)).toFixed(12);
+        default:
+            throw new Error('Invalid trigonometric function');
+    }
 }
