@@ -60,6 +60,14 @@ const calculate = (value) => {
                 } else {
                     throw new Error('Invalid angle for trigonometric function');
                 }
+            } else if (output.includes('arcs')) {
+                const angle = parseFloat(output.substring(4));
+                if (!isNaN(angle) && angle >= -1 && angle <= 1) { 
+                    result = Math.asin(angle); 
+                    history.push('asin(' + angle + ') = ' + result); 
+                } else {
+                    throw new Error('Invalid angle for arcsin function, must be between -1 and 1');
+                }
             }
         } else {
 
