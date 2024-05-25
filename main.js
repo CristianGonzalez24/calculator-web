@@ -76,6 +76,14 @@ const calculate = (value) => {
                 } else {
                     throw new Error('Invalid angle for arccos function, must be between -1 and 1');
                 }
+            } else if (output.includes('arct')) {
+                const angle = parseFloat(output.substring(4));
+                if (!isNaN(angle)) {
+                    result = Math.atan(angle);
+                    history.push('atan(' + angle + ') = ' + result);
+                } else {
+                    throw new Error('Invalid angle for arctan function');
+                }
             }
         } else {
 
