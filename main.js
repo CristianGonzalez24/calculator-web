@@ -84,6 +84,14 @@ const calculate = (value) => {
                 } else {
                     throw new Error('Invalid angle for arctan function');
                 }
+            } else if (output.includes('!')) {
+                const currentValue = parseFloat(output); 
+                if (!isNaN(currentValue)) {
+                    result = factorial(currentValue);
+                    history.push(currentValue + '!' + ' = ' + result);
+                } else {
+                    throw new Error('Invalid number for factorial');
+                }
             }
         } else {
 
