@@ -92,6 +92,14 @@ const calculate = (value) => {
                 } else {
                     throw new Error('Invalid number for factorial');
                 }
+            } else if (output.includes(Math.PI.toString())){
+                result = eval(output);
+                history.push(output.replace(Math.PI.toString(), 'π') + ' = ' + Math.round(result * 100) / 100);
+            } else if (output.includes(Math.E.toString())){
+                result = eval(output);
+                history.push(output.replace(Math.E.toString(), 'e') + ' = ' + Math.round(result * 100) / 100);
+            } else {
+                
             }
         } else {
 
