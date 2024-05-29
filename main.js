@@ -99,7 +99,13 @@ const calculate = (value) => {
                 result = eval(output);
                 history.push(output.replace(Math.E.toString(), 'e') + ' = ' + Math.round(result * 100) / 100);
             } else {
-                
+                result = eval(output.replace('%', '/100'));
+
+                if (isNaN(result)) {
+                    throw new Error('Invalid expression');
+                }
+
+                history.push(output + ' = ' + result);
             }
         } else {
 
