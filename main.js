@@ -100,11 +100,16 @@ const calculate = (value) => {
                 history.push(output.replace(Math.E.toString(), 'e') + ' = ' + Math.round(result * 100) / 100);
             } else {
                 result = eval(output.replace('%', '/100'));
-
                 if (isNaN(result)) {
                     throw new Error('Invalid expression');
                 }
-
+                if (output.includes('%') || output.includes('/') || output.includes('.')) {
+                    
+                    if (output.includes('/') && output.endsWith('/0')) {
+                        throw new Error('Division by zero is not allowed');
+                    }
+                    result = Math.round(result * 100) / 100;
+                }
                 history.push(output + ' = ' + result);
             }
         } else {
