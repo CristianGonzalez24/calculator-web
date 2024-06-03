@@ -112,8 +112,12 @@ const calculate = (value) => {
                 }
                 history.push(output + ' = ' + result);
             }
-        } else {
-
+            output = '';
+            display.textContent = result;
+        } 
+        else if (value === 'AC') {
+            output = '';
+            display.textContent = '0';
         }
     } catch (error) {
         display.textContent = 'Error';
