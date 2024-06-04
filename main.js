@@ -119,6 +119,10 @@ const calculate = (value) => {
             output = '';
             display.textContent = '0';
         }
+        else if (value === 'DEL') {           
+            output = output.slice(0, -1);      
+            display.textContent = output === '' ? '0' : output;
+        }
     } catch (error) {
         display.textContent = 'Error';
         errorMessage.textContent = error.message;
