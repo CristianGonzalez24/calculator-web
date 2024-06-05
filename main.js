@@ -123,6 +123,15 @@ const calculate = (value) => {
             output = output.slice(0, -1);      
             display.textContent = output === '' ? '0' : output;
         }
+        else if (value === ')') {
+            if (output === '') {
+                return
+            }
+            if (display.textContent.includes('(')) {
+                output += ')';
+                display.textContent = output;              
+            }
+        }
     } catch (error) {
         display.textContent = 'Error';
         errorMessage.textContent = error.message;
