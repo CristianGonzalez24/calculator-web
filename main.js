@@ -132,6 +132,13 @@ const calculate = (value) => {
                 display.textContent = output;              
             }
         }
+        else if (value === 'ln' || value === 'log') {
+            
+            if (output === '' || isOperator(output[output.length - 1])) {  
+                output += value === 'ln' ? 'ln(' : 'log(';  
+            }           
+            display.textContent = output;
+        }
     } catch (error) {
         display.textContent = 'Error';
         errorMessage.textContent = error.message;
@@ -141,6 +148,9 @@ const calculate = (value) => {
 
 function clearErrorMessage() {
     errorMessage.textContent = '';
+}
+const isOperator = (char) => {
+    return specialChars.includes(char);
 }
 const calculateTrigFunction = (angle, func) => {
     switch (func) {
