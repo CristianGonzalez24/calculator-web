@@ -139,6 +139,13 @@ const calculate = (value) => {
             }           
             display.textContent = output;
         }
+        else if (value === 'π') {
+            output += Math.PI.toString();
+            display.textContent = output;
+        } else if (value === 'e') {
+            output += Math.E.toString();
+            display.textContent = output;
+        }
     } catch (error) {
         display.textContent = 'Error';
         errorMessage.textContent = error.message;
