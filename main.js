@@ -142,9 +142,18 @@ const calculate = (value) => {
         else if (value === 'π') {
             output += Math.PI.toString();
             display.textContent = output;
-        } else if (value === 'e') {
+        } 
+        else if (value === 'e') {
             output += Math.E.toString();
             display.textContent = output;
+        }
+        else if (value === 'M+') {
+            const num = parseFloat(display.textContent);
+            if (!isNaN(num)) { 
+                addToMemory(num);
+            }
+            output = '';
+            display.textContent = '0';
         }
     } catch (error) {
         display.textContent = 'Error';
@@ -159,10 +168,21 @@ function clearErrorMessage() {
 const isOperator = (char) => {
     return specialChars.includes(char);
 }
+const factorial = (n) => {
+    if (n === 0 || n === 1) {
+        return 1;
+    } else {
+        let result = 1;
+        for (let i = 2; i <= n; i++) {
+            result *= i;
+        }
+        return result; 
+    }
+};
 const calculateTrigFunction = (angle, func) => {
     switch (func) {
         case 'sin':
-            return Math.sin(angle * (Math.PI / 180)).toFixed(12); // Convertir ángulo de grados a radianes
+            return Math.sin(angle * (Math.PI / 180)).toFixed(12);
         case 'cos':
             return Math.cos(angle * (Math.PI / 180)).toFixed(12); 
         case 'tan':
@@ -171,3 +191,18 @@ const calculateTrigFunction = (angle, func) => {
             throw new Error('Invalid trigonometric function');
     }
 }
+const formatMemoryValues = () => {
+    if (memory.length === 0) {
+        return 'No hay valores en memoria';
+    } else {
+        return 'Valores en memoria: ' + memory.join(', ');
+    }
+};
+const addToMemory = () => {
+    const currentValue = display.textContent;
+    if (memory.length >= MEMORY_LIMIT) {
+        memory.shift();
+    }
+    memory.push(currentValue);
+    memoryDisplay.textContent = formatMemoryValues();
+};
