@@ -155,6 +155,11 @@ const calculate = (value) => {
             output = '';
             display.textContent = '0';
         }
+        else if (value === 'M-') {
+            if (memory.length > 0) {
+                removeFromMemory();
+            }
+        }
     } catch (error) {
         display.textContent = 'Error';
         errorMessage.textContent = error.message;
@@ -204,5 +209,9 @@ const addToMemory = () => {
         memory.shift();
     }
     memory.push(currentValue);
-    memoryDisplay.textContent = formatMemoryValues();
+    memoryList.textContent = formatMemoryValues();
+};
+const removeFromMemory = () => {
+    memory.pop();
+    memoryList.textContent = formatMemoryValues();
 };
