@@ -160,6 +160,12 @@ const calculate = (value) => {
                 removeFromMemory();
             }
         }
+        else if (value === 'MR') {
+            if (memory.length > 0) {
+                output += memory[memory.length - 1];
+                display.textContent = output;
+            }
+        }
     } catch (error) {
         display.textContent = 'Error';
         errorMessage.textContent = error.message;
