@@ -166,6 +166,11 @@ const calculate = (value) => {
                 display.textContent = output;
             }
         }
+        else if (value === 'MC') {
+            if (memory.length > 0) {
+                clearMemory();
+            } 
+        }
     } catch (error) {
         display.textContent = 'Error';
         errorMessage.textContent = error.message;
@@ -219,5 +224,9 @@ const addToMemory = () => {
 };
 const removeFromMemory = () => {
     memory.pop();
+    memoryList.textContent = formatMemoryValues();
+};
+const clearMemory = () => {
+    memory = [];
     memoryList.textContent = formatMemoryValues();
 };
