@@ -171,6 +171,19 @@ const calculate = (value) => {
                 clearMemory();
             } 
         }
+        else if (value === 'negate') {
+            let parts = output.match(/-?\d+\.?\d*|\+|\-|\*|\//g);
+
+            if (parts && parts.length > 0) {
+                let lastElement = parts[parts.length - 1];
+
+                if (!isNaN(parseFloat(lastElement))) {
+                    parts[parts.length - 1] = (-parseFloat(lastElement)).toString();
+                    output = parts.join('');
+                    display.textContent = output;
+                }
+            }
+        }
     } catch (error) {
         display.textContent = 'Error';
         errorMessage.textContent = error.message;
