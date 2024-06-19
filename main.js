@@ -196,6 +196,18 @@ const calculate = (value) => {
             output = value;
             display.textContent = output;
         }
+        else if (value === 'cos') {
+            if (output.includes('sin')) {
+                output = output.replace('sin', 'cos'); 
+                display.textContent = output; 
+            }
+            else if (output.includes('tan')) {
+                output = output.replace('tan', 'cos'); 
+                display.textContent = output; 
+            }
+            output = value;
+            display.textContent = output;
+        }
     } catch (error) {
         display.textContent = 'Error';
         errorMessage.textContent = error.message;
