@@ -232,6 +232,18 @@ const calculate = (value) => {
             output = value;
             display.textContent = output;
         }
+        else if (value === 'arcc') {
+            if (output.includes('arcs')) {
+                output = output.replace('arcs', 'arcc'); 
+                display.textContent = output; 
+            }
+            else if (output.includes('arct')) {
+                output = output.replace('arct', 'arcc'); 
+                display.textContent = output; 
+            }
+            output = value;
+            display.textContent = output;
+        }
     } catch (error) {
         display.textContent = 'Error';
         errorMessage.textContent = error.message;
