@@ -244,6 +244,21 @@ const calculate = (value) => {
             output = value;
             display.textContent = output;
         }
+        else if (value === 'arct') {
+            if (output.includes('arcc')) {
+                output = output.replace('arcc', 'arct'); 
+                display.textContent = output; 
+            }
+            else if (output.includes('arcs')) {
+                output = output.replace('arcs', 'arct'); 
+                display.textContent = output; 
+            }
+            output = value;
+            display.textContent = output;
+        }
+        else {
+            
+        }
     } catch (error) {
         display.textContent = 'Error';
         errorMessage.textContent = error.message;
