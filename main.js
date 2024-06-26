@@ -257,7 +257,11 @@ const calculate = (value) => {
             display.textContent = output;
         }
         else {
-            
+            if ((isOperator(value) && output === '' && (value === '√' || value === '%'))) {              
+                output += value;
+                display.textContent = output;
+                return;
+            }    
         }
     } catch (error) {
         display.textContent = 'Error';
