@@ -257,10 +257,18 @@ const calculate = (value) => {
             display.textContent = output;
         }
         else {
-            if ((isOperator(value) && output === '' && (value === '√' || value === '%'))) {              
-                output += value;
+            if (isOperator(value)) {
+                if (output === '' || isOperator(output[output.length - 1])) {
+                    return;
+                }
+                output += value; 
+                display.textContent = output;  
+            } else {
+                if (specialChars.includes(output.slice(-1)) && specialChars.includes(value)) {
+                    output = output.slice(0, -1);
+                }
+                output += value;     
                 display.textContent = output;
-                return;
             }    
         }
     } catch (error) {
