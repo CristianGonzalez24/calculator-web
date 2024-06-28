@@ -271,6 +271,7 @@ const calculate = (value) => {
                 display.textContent = output;
             }    
         }
+        updateHistory();
     } catch (error) {
         display.textContent = 'Error';
         errorMessage.textContent = error.message;
@@ -330,3 +331,14 @@ const clearMemory = () => {
     memory = [];
     memoryList.textContent = formatMemoryValues();
 };
+const updateHistory = () => {
+    if (history.length >= MAX_HISTORY_LENGTH) {
+        history.shift();
+    }
+    historyList.innerHTML = '';
+    history.slice(-historyLength).forEach((calculation) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = calculation;
+        historyList.appendChild(listItem);
+    });
+}
