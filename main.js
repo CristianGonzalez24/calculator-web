@@ -342,3 +342,6 @@ const updateHistory = () => {
         historyList.appendChild(listItem);
     });
 }
+buttons.forEach((button) => {
+    button.addEventListener('click', (e) => calculate(e.target.dataset.value));
+});
