@@ -345,3 +345,24 @@ const updateHistory = () => {
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => calculate(e.target.dataset.value));
 });
+document.addEventListener('keydown', function(event) {
+    const keyCode = event.keyCode;
+    if (keyCode >= 96 && keyCode <= 105) {
+        const number = keyCode - 96;
+        handleInput(number.toString());
+    } else if (keyCode === 106) { 
+        handleInput('*');
+    } else if (keyCode === 107) { 
+        handleInput('+');
+    } else if (keyCode === 109) { 
+        handleInput('-');
+    } else if (keyCode === 111) { 
+        handleInput('/');
+    } else if (keyCode === 13) { 
+        calculate('=');
+    } else if (keyCode === 8) { 
+        calculate('DEL');
+    } else if (keyCode === 110) {
+        calculate('.');
+    }
+});
