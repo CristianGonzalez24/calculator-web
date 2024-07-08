@@ -1,6 +1,6 @@
 const display = document.querySelector('.calculator__display');
 const buttons = document.querySelectorAll('.calculator__btn');
-const historyList = document.querySelector('node__history--list');
+const historyList = document.querySelector('.node__history--list');
 const memoryList = document.querySelector('.node__memory--list');
 const errorMessage = document.querySelector('.calculator__error');
 const specialChars = ['/', '*', '+', '-', '%', '=', '^', '!', '√'];
@@ -276,11 +276,19 @@ const calculate = (value) => {
         display.textContent = 'Error';
         errorMessage.textContent = error.message;
         output = '';
+        console.log(error);
     }
 }
-
-function clearErrorMessage() {
-    errorMessage.textContent = '';
+const updateHistory = () => {
+    if (history.length >= historyLength) {
+        history.shift();
+    }
+    historyList.innerHTML = '';
+    history.slice(-historyLength).forEach((calculation) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = calculation;
+        historyList.appendChild(listItem);
+    });
 }
 const isOperator = (char) => {
     return specialChars.includes(char);
@@ -317,7 +325,7 @@ const formatMemoryValues = () => {
 };
 const addToMemory = () => {
     const currentValue = display.textContent;
-    if (memory.length >= MEMORY_LIMIT) {
+    if (memory.length >= memoryLimit) {
         memory.shift();
     }
     memory.push(currentValue);
@@ -331,17 +339,12 @@ const clearMemory = () => {
     memory = [];
     memoryList.textContent = formatMemoryValues();
 };
-const updateHistory = () => {
-    if (history.length >= MAX_HISTORY_LENGTH) {
-        history.shift();
-    }
-    historyList.innerHTML = '';
-    history.slice(-historyLength).forEach((calculation) => {
-        const listItem = document.createElement('li');
-        listItem.textContent = calculation;
-        historyList.appendChild(listItem);
-    });
+function clearErrorMessage() {
+    errorMessage.textContent = '';
 }
+buttons.forEach((button) => {
+    button.addEventListener('click', (e) => calculate(e.target.dataset.value));
+});
 document.addEventListener('keydown', function(event) {
     const keyCode = event.keyCode;
     if (keyCode >= 96 && keyCode <= 105) {
@@ -367,6 +370,3 @@ function handleInput(number) {
     output += number;
     display.textContent = output;  
 }
-buttons.forEach((button) => {
-    button.addEventListener('click', (e) => calculate(e.target.dataset.value));
-});
