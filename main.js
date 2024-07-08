@@ -342,9 +342,6 @@ const updateHistory = () => {
         historyList.appendChild(listItem);
     });
 }
-buttons.forEach((button) => {
-    button.addEventListener('click', (e) => calculate(e.target.dataset.value));
-});
 document.addEventListener('keydown', function(event) {
     const keyCode = event.keyCode;
     if (keyCode >= 96 && keyCode <= 105) {
@@ -365,4 +362,11 @@ document.addEventListener('keydown', function(event) {
     } else if (keyCode === 110) {
         calculate('.');
     }
+});
+function handleInput(number) {
+    output += number;
+    display.textContent = output;  
+}
+buttons.forEach((button) => {
+    button.addEventListener('click', (e) => calculate(e.target.dataset.value));
 });
