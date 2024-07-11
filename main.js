@@ -273,9 +273,9 @@ const calculate = (value) => {
         }
         updateHistory();
     } catch (error) {
-        display.textContent = 'Error';
-        errorMessage.textContent = error.message;
-        output = '';
+        // display.textContent = 'Error';
+        // errorMessage.textContent = error.message;
+        // output = '';
         console.log(error);
     }
 }
@@ -370,3 +370,5 @@ function handleInput(number) {
     output += number;
     display.textContent = output;  
 }
+
+module.exports = { calculate, clearErrorMessage, updateHistory };
