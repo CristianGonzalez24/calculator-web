@@ -97,3 +97,9 @@
   color: #333;
   font-weight: bold;
 }
+
+@media screen and (max-width: 600px) {
+  .container{
+      background-image: none;
+  }
+}
