@@ -370,5 +370,3 @@ function handleInput(number) {
     output += number;
     display.textContent = output;  
 }
-
-module.exports = { calculate, clearErrorMessage, updateHistory };
