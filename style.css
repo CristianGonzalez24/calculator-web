@@ -110,4 +110,8 @@
     padding: 0;
     margin: 0;
   }
+  .calculator .display{
+    margin-bottom: 0;
+    border-radius: 0;
+  }
 }
