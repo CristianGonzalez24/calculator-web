@@ -114,4 +114,7 @@
     margin-bottom: 0;
     border-radius: 0;
   }
+  .history-container, .memory, #error-message{
+    display: none;
+  }
 }
