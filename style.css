@@ -121,4 +121,8 @@
     margin: 0;
     box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
   }
+  .btn.operator{
+    background-color: transparent;
+    color: #12CBC4;
+  }
 }
