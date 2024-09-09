@@ -51,7 +51,7 @@ If you want to contribute to this project, feel free to fork and submit a pull r
 
 ## Authors
 
-- This project was created by [Cristian González] (https://github.com/CristianGonzalez24).
+- This project was created by [Cristian Gonzalez](https://github.com/CristianGonzalez24).
 
 
 ## License
