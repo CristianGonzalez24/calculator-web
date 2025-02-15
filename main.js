@@ -273,10 +273,9 @@ const calculate = (value) => {
         }
         updateHistory();
     } catch (error) {
-        // display.textContent = 'Error';
-        // errorMessage.textContent = error.message;
-        // output = '';
-        console.log(error);
+        display.textContent = 'Error';
+        errorMessage.textContent = error.message;
+        output = '';
     }
 }
 const updateHistory = () => {
