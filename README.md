@@ -45,7 +45,7 @@ The application should now be running on `http://localhost:5173/` by default.
 
 ## Screenshots
 
-![Web Calculator](public/calculator-image.JPG)
+![Web Calculator](docs/screenshot-calculator.webp)
 
 ---
 
