@@ -2,77 +2,137 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/calculator-icon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional Scientific Calculator with advanced mathematical functions, memory operations, and calculation history">
+    <meta name="keywords" content="calculator, scientific calculator, math, trigonometry, logarithms, memory functions">
+    <meta name="author" content="Scientific Calculator App">
+    <title>Scientific Calculator Pro - Advanced Mathematical Calculator</title>
+    <meta name="theme-color" content="#00d4ff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="SciCalc Pro">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" href="style.css">
-    <title>Advanced Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class="container">
-      <div class="container__calculator">
-        <div class="calculator__display">0</div>
+    <div class="background-overlay"></div>
 
-        <button data-value="AC" class="calculator__btn clear">&#8705;</button>
-        <button data-value="DEL" class="calculator__btn">&#10229;</button>
-        <button data-value="(" class="calculator__btn">(</button>
-        <button data-value=")" class="calculator__btn">)</button>
-        <button data-value="e" class="calculator__btn">e</button>
-        <button data-value="π" class="calculator__btn">&pi;</button>
+    <div class="calculator-container" role="main">
+      <div class="calculator">
         
-        <button data-value="log" class="calculator__btn">log</button>
-        <button data-value="ln" class="calculator__btn">ln</button>
-        <button data-value="!" class="calculator__btn">n!</button>
-        <button data-value="^" class="calculator__btn">&#94;</button>
-        <button data-value="√" class="calculator__btn">&Sqrt;</button>
-        <button data-value="%" class="calculator__btn">&percnt;</button>
+        <header class="calculator-header">
+          <h1>Scientific Calculator Pro</h1>
+          <div class="mode-toggle">
+            <button id="angleMode" class="mode-btn" aria-label="Toggle angle mode">DEG</button>
+            <button id="themeToggle" class="mode-btn" aria-label="Toggle theme">🌙</button>
+            <button id="soundToggle" class="mode-btn" aria-label="Toggle sound">🔊</button>
+          </div>
+        </header>
 
-        <button data-value="negate" class="calculator__btn">+/-</button>
-        <button data-value="MC" class="calculator__btn memory">MC</button>
-        <button data-value="MR" class="calculator__btn memory">MR</button>
-        <button data-value="M-" class="calculator__btn memory">M-</button>
-        <button data-value="M+" class="calculator__btn memory">M+</button>
-        <button data-value="/" class="calculator__btn operator">&divide;</button>
-
-        <button data-value="arct" class="calculator__btn memory">arct</button>
-        <button data-value="tan" class="calculator__btn">tan</button>
-        <button data-value="7" class="calculator__btn">7</button>
-        <button data-value="8" class="calculator__btn">8</button>
-        <button data-value="9" class="calculator__btn">9</button>
-        <button data-value="*" class="calculator__btn operator">&times;</button>
-
-        <button data-value="arcs" class="calculator__btn memory">arcs</button>
-        <button data-value="sin" class="calculator__btn">sin</button>
-        <button data-value="4" class="calculator__btn">4</button>
-        <button data-value="5" class="calculator__btn">5</button>
-        <button data-value="6" class="calculator__btn">6</button>
-        <button data-value="-" class="calculator__btn operator">&minus;</button>
-
-        <button data-value="arcc" class="calculator__btn memory">arcc</button>
-        <button data-value="cos" class="calculator__btn">cos</button>
-        <button data-value="1" class="calculator__btn">1</button>
-        <button data-value="2" class="calculator__btn">2</button>
-        <button data-value="3" class="calculator__btn">3</button>
-        <button data-value="+" class="calculator__btn operator">&plus;</button>
-
-        <button data-value="00" class="calculator__btn">00</button>
-        <button data-value="0" id="zero" class="calculator__btn">0</button>
-        <button data-value="." class="calculator__btn">&#8901;</button>
-        <button data-value="=" id="equal" class="calculator__btn operator">&#61;</button>
-      </div>
-      <span class="calculator__error"></span>
-
-      <div class="container__node">
-        <div class="node__history">
-            <h2>History</h2>
-            <ul class="node__history--list">
-            </ul>
+        <div class="display-section">
+          <div class="display-container">
+              <div class="expression-display" id="expressionDisplay" aria-label="Current expression"></div>
+              <div class="main-display" id="mainDisplay" aria-label="Calculator display">0</div>
+              <div class="memory-indicator" id="memoryIndicator" aria-label="Memory status">Memory</div>
+          </div>
         </div>
-        <div class="node__memory">
-            <h2>Memory</h2>
-            <ul class="node__memory--list"></ul>
+
+        <div class="button-grid" role="grid">
+          <!-- Row 1: Memory and Clear Functions -->
+          <button class="btn memory-btn" data-action="mc" aria-label="Memory Clear">MC</button>
+          <button class="btn memory-btn" data-action="mr" aria-label="Memory Recall">MR</button>
+          <button class="btn memory-btn" data-action="ms" aria-label="Memory Store">MS</button>
+          <button class="btn memory-btn" data-action="m-add" aria-label="Memory Add">M+</button>
+          <button class="btn memory-btn" data-action="m-subtract" aria-label="Memory Subtract">M-</button>
+
+          <!-- Row 2: Advanced Functions -->
+          <button class="btn function-btn" data-action="sin" aria-label="Sine">sin</button>
+          <button class="btn function-btn" data-action="cos" aria-label="Cosine">cos</button>
+          <button class="btn function-btn" data-action="tan" aria-label="Tangent">tan</button>
+          <button class="btn function-btn" data-action="log" aria-label="Logarithm base 10">log</button>
+          <button class="btn function-btn" data-action="ln" aria-label="Natural logarithm">ln</button>
+
+          <!-- Row 3: More Advanced Functions -->
+          <button class="btn function-btn" data-action="asin" aria-label="Arc sine">asin</button>
+          <button class="btn function-btn" data-action="acos" aria-label="Arc cosine">acos</button>
+          <button class="btn function-btn" data-action="atan" aria-label="Arc tangent">atan</button>
+          <button class="btn function-btn" data-action="pi" aria-label="Pi constant">π</button>
+          <button class="btn function-btn" data-action="e" aria-label="Euler's number">e</button>
+
+          <!-- Row 4: Power and Root Functions -->
+          <button class="btn function-btn" data-action="power" aria-label="Power">x^y</button>
+          <button class="btn function-btn" data-action="square" aria-label="Square">x²</button>
+          <button class="btn function-btn" data-action="cube" aria-label="Cube">x³</button>
+          <button class="btn function-btn" data-action="sqrt" aria-label="Square root">√</button>
+          <button class="btn function-btn" data-action="cbrt" aria-label="Cube root">∛</button>
+
+          <!-- Row 5: Special Functions -->
+          <button class="btn function-btn" data-action="factorial" aria-label="Factorial">n!</button>
+          <button class="btn function-btn" data-action="random" aria-label="Random number">Rnd</button>
+          <button class="btn function-btn" data-action="percent" aria-label="Percentage">%</button>
+          <button class="btn clear-btn" data-action="clear-entry" aria-label="Clear Entry">CE</button>
+          <button class="btn clear-btn" data-action="clear-all" aria-label="Clear All">C</button>
+
+          <!-- Row 6: Parentheses and Basic Operations -->
+          <button class="btn operator-btn" data-action="(" aria-label="Left parenthesis">(</button>
+          <button class="btn operator-btn" data-action=")" aria-label="Right parenthesis">)</button>
+          <button class="btn number-btn" data-action="7" aria-label="Seven">7</button>
+          <button class="btn number-btn" data-action="8" aria-label="Eight">8</button>
+          <button class="btn number-btn" data-action="9" aria-label="Nine">9</button>
+
+          <!-- Row 7 -->
+          <button class="btn operator-btn" data-action="÷" aria-label="Divide">÷</button>
+          <button class="btn utility-btn" data-action="backspace" aria-label="Backspace">⌫</button>
+          <button class="btn number-btn" data-action="4" aria-label="Four">4</button>
+          <button class="btn number-btn" data-action="5" aria-label="Five">5</button>
+          <button class="btn number-btn" data-action="6" aria-label="Six">6</button>
+
+          <!-- Row 8 -->
+          <button class="btn operator-btn" data-action="×" aria-label="Multiply">×</button>
+          <button class="btn utility-btn" data-action="copy" aria-label="Copy result">📋</button>
+          <button class="btn number-btn" data-action="1" aria-label="One">1</button>
+          <button class="btn number-btn" data-action="2" aria-label="Two">2</button>
+          <button class="btn number-btn" data-action="3" aria-label="Three">3</button>
+
+          <!-- Row 9 -->
+          <button class="btn operator-btn" data-action="-" aria-label="Subtract">−</button>
+          <button class="btn utility-btn" data-action="history" aria-label="Show history">📜</button>
+          <button class="btn number-btn wide" data-action="0" aria-label="Zero">0</button>
+          <button class="btn number-btn" data-action="." aria-label="Decimal point">.</button>
+
+          <!-- Row 10 -->
+          <button class="btn operator-btn" data-action="+" aria-label="Add">+</button>
+          <button class="btn equals-btn wide" data-action="=" aria-label="Equals">=</button>
+        </div>
+      </div>
+
+      <div class="history-panel" id="historyPanel" role="complementary" aria-label="Calculation history">
+        <div class="history-header">
+          <h2>History</h2>
+          <button class="btn clear-history" id="clearHistory" aria-label="Clear history">Clear</button>
+        </div>
+        <div class="history-content" id="historyContent">
+          <p class="no-history">No calculations yet</p>
         </div>
       </div>
     </div>
-    <script src="/main.js"></script>
+
+    <div class="error-toast" id="errorToast" role="alert" aria-live="assertive"></div>
+
+    <div class="loading-indicator" id="loadingIndicator">
+      <div class="spinner"></div>
+    </div>
+
+    <script type="module" src="utils.js"></script>
+    <script type="module" src="memory.js"></script>
+    <script type="module" src="history.js"></script>
+    <script type="module" src="main.js"></script>
   </body>
 </html>

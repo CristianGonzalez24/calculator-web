@@ -1,0 +1,83 @@
+{
+    "name": "Scientific Calculator Pro",
+    "short_name": "SciCalc Pro",
+    "description": "A comprehensive scientific calculator with advanced mathematical functions, memory operations, calculation history, and responsive design. Perfect for students, engineers, and professionals.",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "theme_color": "#00d4ff",
+    "background_color": "#0a0a0b",
+    "lang": "en",
+    "dir": "ltr",
+    "categories": ["education", "productivity", "utilities"],
+    "icons": [
+        {
+            "src": "/icons/web-app-manifest-128x128.png",
+            "sizes": "128x128",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icons/web-app-manifest-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "/icons/web-app-manifest-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/screenshots/desktop-calculator.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Scientific Calculator Pro - Desktop View"
+        },
+        {
+            "src": "/screenshots/mobile-calculator.png",
+            "sizes": "390x844",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Scientific Calculator Pro - Mobile View"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Basic Calculator",
+            "short_name": "Basic",
+            "description": "Open basic calculator mode",
+            "url": "/?mode=basic",
+            "icons": [
+                {
+                    "src": "/icons/shortcut-basic.png",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "Scientific Mode",
+            "short_name": "Scientific",
+            "description": "Open scientific calculator mode",
+            "url": "/?mode=scientific",
+            "icons": [
+                {
+                    "src": "/icons/shortcut-scientific.png",
+                    "sizes": "96x96"
+                }
+            ]
+        }
+    ],
+    "prefer_related_applications": false,
+    "edge_side_panel": {
+        "preferred_width": 400
+    },
+    "launch_handler": {
+        "client_mode": "navigate-existing"
+    }
+}
