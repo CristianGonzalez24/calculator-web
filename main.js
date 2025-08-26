@@ -2,7 +2,6 @@
  * Scientific Calculator Main Application
  * @fileoverview Main calculator logic with comprehensive mathematical operations
  */
-// git commit -m "Refactor: Full modification of the code, respecting the solid principles, adding accessibility improvements and the creation of tests with vitest"
 import { 
     formatNumber, 
     ERROR_MESSAGES, 
